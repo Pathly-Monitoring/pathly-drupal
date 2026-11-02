@@ -43,11 +43,13 @@ docker run --rm -v "$PWD:/module:ro" drupal:10.3-php8.2-apache \
 # Image PHP avec Xdebug, puis projet Drupal d'essai dans un volume.
 docker build -t pathly-drupal-test:php8.4 tests/docker
 docker run --rm -v pathly-drupal-d11:/work -v "$PWD:/module" \
-  pathly-drupal-test:php8.4 bash /module/tests/docker/setup-project.sh "^11" /work/project
+  pathly-drupal-test:php8.4 \
+  bash /module/tests/docker/setup-project.sh "^11" /work/project
 
 # Tests unitaires, couverture, Kernel, phpcs.
 tests/docker/dtest.sh pathly-drupal-d11 pathly-drupal-test:php8.4 \
-  "../../../../vendor/bin/phpunit --testsuite unit && php tests/coverage-check.php build/coverage.cov"
+  "../../../../vendor/bin/phpunit --testsuite unit \
+  && php tests/coverage-check.php build/coverage.cov"
 tests/docker/dtest.sh pathly-drupal-d11 pathly-drupal-test:php8.4 \
   "../../../../vendor/bin/phpunit --testsuite kernel --no-coverage"
 tests/docker/dtest.sh pathly-drupal-d11 pathly-drupal-test:php8.4 \

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Tests du module. Les tests unitaires portent la couverture des lignes et
-  des branches (Xdebug) : phpunit --testsuite unit, puis
-  php tests/coverage-check.php build/coverage.cov. Les tests Kernel tournent
-  sur un vrai Drupal : phpunit --testsuite kernel --no-coverage.
-  Le module doit être dans web/modules/custom/pathly d'un projet Drupal 11
-  qui a drupal/core-dev. Voir tests/README.md.
+  des branches (Xdebug), contrôlée par tests/coverage-check.php. Les tests
+  Kernel tournent sur un vrai Drupal, sans couverture. Commandes exactes :
+  tests/README.md. Le module doit être dans web/modules/custom/pathly d'un
+  projet Drupal 11 qui a drupal/core-dev.
 -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          bootstrap="../../../core/tests/bootstrap.php"

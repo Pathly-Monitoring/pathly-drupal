@@ -1,0 +1,18 @@
+################
+# CI of drupal.org (git.drupalcode.org), from the GitLab templates of the
+# Drupal Association: phpcs, PHPStan, cspell, ESLint, stylelint, PHPUnit.
+# The GitHub Actions CI is in .github/workflows/ci.yml.
+################
+include:
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - '/includes/include.drupalci.main.yml'
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+variables:
+  # Drupal 10 too, not only the current major version.
+  OPT_IN_TEST_PREVIOUS_MAJOR: 1
+  # French texts and the publication folder are not English words.
+  _CSPELL_IGNORE_PATHS: 'translations/*, publication/*, tests/README.md'

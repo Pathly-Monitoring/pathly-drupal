@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pathly">
+  <rect width="64" height="64" rx="14" fill="#0b1220"/>
+  <path d="M20 48V16h16.5a13 13 0 0 1 0 26H20" fill="none" stroke="#0f9f90" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="20" cy="48" r="3.8" fill="#3ddec9"/>
+  <path d="M20 42h8" fill="none" stroke="#3ddec9" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+</svg>

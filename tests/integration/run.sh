@@ -42,7 +42,7 @@ cp -r /module web/modules/custom/pathly
 rm -rf web/modules/custom/pathly/{.git,build,vendor}
 
 step "Installation de Drupal"
-drush site:install minimal -y --db-url=sqlite://sites/default/files/.ht.sqlite --site-name=Shop >/dev/null 2>&1
+drush site:install minimal -y --db-url=sqlite://localhost/sites/default/files/.ht.sqlite --site-name=Shop >/dev/null 2>&1
 chmod u+w web/sites/default web/sites/default/settings.php
 echo "\$settings['pathly_api_base_url'] = 'http://127.0.0.1:8099';" >> web/sites/default/settings.php
 

@@ -41,7 +41,7 @@
 }
 
 .pathly-status__shot {
-  max-width: 100%;
+  max-width: min(100%, 40rem);
   height: auto;
   border: 1px solid #ccc;
 }
