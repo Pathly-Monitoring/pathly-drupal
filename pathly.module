@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Hooks of the Pathly module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\pathly\ConnectorException;
+
+/**
+ * Implements hook_help().
+ */
+function pathly_help(string $route_name, RouteMatchInterface $route_match): ?string {
+  if ($route_name !== 'help.page.pathly') {
+    return NULL;
+  }
+  return '<p>' . t('Pathly watches the path of your visitors: Ping checks that the site answers, Flow replays a visit in a real browser. This module creates the Ping of the site, lets Lumi prepare the Flow, replays the Flow after each update and shows the status in the administration.') . '</p>';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function pathly_theme(): array {
+  return [
+    'pathly_status' => [
+      'variables' => [
+        'data' => [],
+        'settings_url' => '',
+        'app_url' => '',
+        'signup_url' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_modules_installed().
+ */
+function pathly_modules_installed(array $modules, bool $is_syncing = FALSE): void {
+  \Drupal::service('pathly.update_watcher')->check('modules_installed');
+}
+
+/**
+ * Implements hook_rebuild().
+ *
+ * Runs at the end of update.php, "drush updatedb" and "drush cache:rebuild".
+ */
+function pathly_rebuild(): void {
+  \Drupal::service('pathly.update_watcher')->check('cache_rebuild');
+}
+
+/**
+ * Implements hook_cron().
+ */
+function pathly_cron(): void {
+  \Drupal::service('pathly.update_watcher')->check('cron');
+}
+
+/**
+ * Implements hook_module_preuninstall().
+ *
+ * Unpublishes the status page if the module published it for the badge.
+ * The Ping and the Flow stay in the Pathly account.
+ */
+function pathly_module_preuninstall(string $module): void {
+  if ($module !== 'pathly') {
+    return;
+  }
+  try {
+    \Drupal::service('pathly.connector')->disableBadge();
+  }
+  catch (ConnectorException) {
+    // Pathly cannot be reached: the page stays as it is in Pathly.
+  }
+}

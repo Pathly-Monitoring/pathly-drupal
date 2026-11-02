@@ -1,0 +1,36 @@
+services:
+  logger.channel.pathly:
+    parent: logger.channel_base
+    arguments: ['pathly']
+
+  pathly.http_client:
+    class: GuzzleHttp\ClientInterface
+    factory: ['@http_client_factory', 'fromOptions']
+    arguments:
+      - { timeout: 10, connect_timeout: 5, http_errors: false, allow_redirects: false }
+
+  pathly.key_store:
+    class: Drupal\pathly\KeyStore
+    arguments: ['@state', '@settings']
+
+  pathly.client:
+    class: Drupal\pathly\Api\PathlyClient
+    arguments: ['@pathly.http_client', '@pathly.key_store', '@settings', '@extension.list.module']
+
+  pathly.connector:
+    class: Drupal\pathly\Connector
+    arguments: ['@pathly.client', '@pathly.key_store', '@state', '@module_handler', '@cache_tags.invalidator', '@logger.channel.pathly']
+
+  pathly.status_report:
+    class: Drupal\pathly\StatusReport
+    arguments: ['@pathly.client', '@pathly.connector', '@cache.default', '@datetime.time', '@language_manager']
+
+  pathly.update_watcher:
+    class: Drupal\pathly\UpdateWatcher
+    arguments: ['@pathly.connector', '@state', '@config.factory', '@extension.list.module', '@extension.list.theme', '@datetime.time']
+
+  pathly.package_manager_subscriber:
+    class: Drupal\pathly\EventSubscriber\PackageManagerSubscriber
+    arguments: ['@pathly.update_watcher', '@extension.list.module', '@extension.list.theme']
+    tags:
+      - { name: event_subscriber }

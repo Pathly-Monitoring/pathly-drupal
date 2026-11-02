@@ -1,0 +1,11 @@
+pathly.settings:
+  title: 'Pathly'
+  description: 'Connect the site to Pathly: Ping, Flow and uptime badge.'
+  route_name: pathly.settings
+  parent: system.admin_config_services
+
+pathly.report:
+  title: 'Pathly'
+  description: 'Ping and Flow status, last failure, plan and quotas.'
+  route_name: pathly.report
+  parent: system.admin_reports

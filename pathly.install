@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall of the Pathly module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\pathly\Connector;
+
+/**
+ * Implements hook_uninstall().
+ *
+ * The configuration is removed by Drupal. The key and the identifiers kept
+ * in the State API are removed here.
+ */
+function pathly_uninstall(bool $is_syncing = FALSE): void {
+  \Drupal::state()->deleteMultiple(Connector::STATE_KEYS);
+  \Drupal::cache()->delete('pathly:status');
+}

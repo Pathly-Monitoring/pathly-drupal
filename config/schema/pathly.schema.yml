@@ -1,0 +1,10 @@
+pathly.settings:
+  type: config_object
+  label: 'Pathly settings'
+  mapping:
+    replay_after_updates:
+      type: boolean
+      label: 'Replay the Flow after an update of Drupal core, a module or a theme'
+    badge_enabled:
+      type: boolean
+      label: 'Show the uptime badge'

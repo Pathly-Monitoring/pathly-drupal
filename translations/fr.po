@@ -1,0 +1,243 @@
+# French translation of Pathly (Drupal module).
+msgid ""
+msgstr ""
+"Project-Id-Version: pathly\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+
+msgid "A Flow on a shop puts a product in a test cart. Your abandoned cart reminders may count these carts."
+msgstr "Sur une boutique, un Flow met un produit dans un panier de test. Vos relances de panier abandonné peuvent compter ces paniers."
+
+msgid "A Pathly API key starts with sp_."
+msgstr "Une clé d'API Pathly commence par sp_."
+
+msgid "A key is saved. It is never shown again. Leave the field empty to keep it."
+msgstr "Une clé est enregistrée. Elle n'est plus jamais affichée. Laissez le champ vide pour la garder."
+
+msgid "API key"
+msgstr "Clé d'API"
+
+msgid "Cart, up to the checkout page (nothing is paid)"
+msgstr "Panier, jusqu'à la page de paiement (rien n'est payé)"
+
+msgid "Confirm that you manage this site first."
+msgstr "Confirmez d'abord que vous gérez ce site."
+
+msgid "Connect the site to Pathly first."
+msgstr "Connectez d'abord le site à Pathly."
+
+msgid "Connected. A Ping now watches this site."
+msgstr "Connecté. Un Ping surveille maintenant ce site."
+
+msgid "Connected. The Ping of this site already existed in Pathly: the module uses it."
+msgstr "Connecté. Le Ping de ce site existait déjà dans Pathly : le module l'utilise."
+
+msgid "Contact form, stopped before sending"
+msgstr "Formulaire de contact, arrêté avant l'envoi"
+
+msgid "Disconnect"
+msgstr "Déconnecter"
+
+msgid "Existing Flow"
+msgstr "Flow existant"
+
+msgid "Flow of the visitor path"
+msgstr "Flow du parcours des visiteurs"
+
+msgid "Flow proposed by Lumi, already replayed once"
+msgstr "Flow proposé par Lumi, déjà rejoué une fois"
+
+msgid "I manage this site. Lumi may open it in a test browser: it pays nothing, sends no form and only types test values."
+msgstr "Je gère ce site. Lumi peut l'ouvrir dans un navigateur de test : il ne paie rien, n'envoie aucun formulaire et ne saisit que des valeurs de test."
+
+msgid "Login page"
+msgstr "Page de connexion"
+
+msgid "Lumi could not open the site. Check that it is public."
+msgstr "Lumi n'a pas pu ouvrir le site. Vérifiez qu'il est public."
+
+msgid "Lumi found no Flow it could replay on this site. You can record the Flow in Pathly."
+msgstr "Lumi n'a trouvé aucun Flow qu'il puisse rejouer sur ce site. Vous pouvez enregistrer le Flow dans Pathly."
+
+msgid "Lumi is exploring the site and replays each Flow it finds. This takes up to two minutes."
+msgstr "Lumi explore le site et rejoue chaque Flow qu'il trouve. Cela prend jusqu'à deux minutes."
+
+msgid "Lumi is exploring the site. Refresh this page in a minute."
+msgstr "Lumi explore le site. Actualisez cette page dans une minute."
+
+msgid "Lumi is very busy. Try again in a minute."
+msgstr "Lumi est très demandé. Réessayez dans une minute."
+
+msgid "Lumi, the Flow assistant, is paused. Create the Flow in Pathly instead."
+msgstr "Lumi, l'assistant Flow, est en pause. Créez le Flow dans Pathly."
+
+msgid "No Flow yet: after an update, the Ping is replayed instead."
+msgstr "Pas encore de Flow : après une mise à jour, c'est le Ping qui est rejoué."
+
+msgid "No account yet? <a href=\":signup\" target=\"_blank\" rel=\"noopener\">Create a free account</a>, then create an API key in <a href=\":keys\" target=\"_blank\" rel=\"noopener\">Pathly settings</a>. Prefer a key limited to one Space."
+msgstr "Pas encore de compte ? <a href=\":signup\" target=\"_blank\" rel=\"noopener\">Créez un compte gratuit</a>, puis une clé d'API dans les <a href=\":keys\" target=\"_blank\" rel=\"noopener\">réglages de Pathly</a>. Préférez une clé limitée à un Espace."
+
+msgid "Paste a Pathly API key (sp_...). Scopes: org:read, scenarios:read, scenarios:write, runs:read, runs:trigger, assistant:run, assistant:save, status:read, status:write."
+msgstr "Collez une clé d'API Pathly (sp_...). Portées : org:read, scenarios:read, scenarios:write, runs:read, runs:trigger, assistant:run, assistant:save, status:read, status:write."
+
+msgid "Pathly account"
+msgstr "Compte Pathly"
+
+msgid "Pathly cannot open this site address. Check that the site is public."
+msgstr "Pathly ne peut pas ouvrir l'adresse de ce site. Vérifiez que le site est public."
+
+msgid "Pathly could not be reached. Try again in a few minutes."
+msgstr "Pathly est injoignable. Réessayez dans quelques minutes."
+
+msgid "Pathly refused the request. Try again later."
+msgstr "Pathly a refusé la demande. Réessayez plus tard."
+
+msgid "Pathly refused this API key: it is wrong, revoked or expired."
+msgstr "Pathly refuse cette clé d'API : elle est fausse, révoquée ou expirée."
+
+msgid "Pathly uptime badge"
+msgstr "Badge de disponibilité Pathly"
+
+msgid "Pathly watches the path of your visitors. Ping checks that the site answers. Flow replays a visit in a real browser, up to the form or the checkout page, and keeps a screenshot of the step that breaks."
+msgstr "Pathly surveille le parcours de vos visiteurs. Ping vérifie que le site répond. Flow rejoue une visite dans un vrai navigateur, jusqu'au formulaire ou à la page de paiement, et garde une capture de l'étape qui casse."
+
+msgid "Pathly watches the path of your visitors: Ping checks that the site answers, Flow replays a visit in a real browser. This module creates the Ping of the site, lets Lumi prepare the Flow, replays the Flow after each update and shows the status in the administration."
+msgstr "Pathly surveille le parcours de vos visiteurs. Ping vérifie que le site répond. Flow rejoue une visite dans un vrai navigateur. Ce module crée le Ping du site, laisse Lumi préparer le Flow, rejoue le Flow après chaque mise à jour et affiche l'état dans l'administration."
+
+msgid "Pathly: Ping and Flow status"
+msgstr "Pathly : état du Ping et du Flow"
+
+msgid "Ping watches @url."
+msgstr "Le Ping surveille @url."
+
+msgid "Prepare the Flow with Lumi"
+msgstr "Préparer le Flow avec Lumi"
+
+msgid "Publishes the Pathly status page of the key. Then place the \"Pathly uptime badge\" block. The image of the badge is loaded from api.pathlyhq.com by the browser of your visitors."
+msgstr "Publie la page de statut Pathly de la clé. Placez ensuite le bloc « Badge de disponibilité Pathly ». L'image du badge est chargée depuis api.pathlyhq.com par le navigateur de vos visiteurs."
+
+msgid "Refresh"
+msgstr "Actualiser"
+
+msgid "Replay the Flow after each update of Drupal core, a module or a theme"
+msgstr "Rejouer le Flow après chaque mise à jour du cœur de Drupal, d'un module ou d'un thème"
+
+msgid "Save this Flow"
+msgstr "Enregistrer ce Flow"
+
+msgid "Show the uptime badge"
+msgstr "Afficher le badge de disponibilité"
+
+msgid "Start Lumi again"
+msgstr "Relancer Lumi"
+
+msgid "Start Lumi first."
+msgstr "Lancez d'abord Lumi."
+
+msgid "The Flow is saved in Pathly. It runs now, then on its schedule and after each update."
+msgstr "Le Flow est enregistré dans Pathly. Il tourne tout de suite, puis à son rythme et après chaque mise à jour."
+
+msgid "The key is set in settings.php."
+msgstr "La clé est définie dans settings.php."
+
+msgid "The site is disconnected. The Ping and the Flow stay in your Pathly account."
+msgstr "Le site est déconnecté. Le Ping et le Flow restent dans votre compte Pathly."
+
+msgid "This API key lacks a scope. Create a key with the scopes listed under the API key field."
+msgstr "Il manque une portée à cette clé d'API. Créez une clé avec les portées indiquées sous le champ de la clé."
+
+msgid "This Flow is now replayed after each update."
+msgstr "Ce Flow est maintenant rejoué après chaque mise à jour."
+
+msgid "This Flow is replayed after each update: <a href=\":url\" target=\"_blank\" rel=\"noopener\">see it in Pathly</a>."
+msgstr "Ce Flow est rejoué après chaque mise à jour : <a href=\":url\" target=\"_blank\" rel=\"noopener\">le voir dans Pathly</a>."
+
+msgid "Too many calls to Pathly. Try again in a minute."
+msgstr "Trop d'appels à Pathly. Réessayez dans une minute."
+
+msgid "Uptime watched by Pathly"
+msgstr "Disponibilité surveillée par Pathly"
+
+msgid "Use this Flow"
+msgstr "Utiliser ce Flow"
+
+msgid "Visitor path"
+msgstr "Parcours de visiteur"
+
+msgid "You have used all the Lumi trials of your plan for today. Try again tomorrow, or upgrade your plan in Pathly."
+msgstr "Vous avez utilisé tous les essais de Lumi de votre offre pour aujourd'hui. Réessayez demain, ou changez d'offre dans Pathly."
+
+msgid "Your Pathly plan is full. Upgrade it in Pathly, or remove a Ping or a Flow."
+msgstr "Votre offre Pathly est pleine. Changez d'offre dans Pathly, ou retirez un Ping ou un Flow."
+
+msgid "Choose another one"
+msgstr "En choisir un autre"
+
+msgid "Connect the site"
+msgstr "Connecter le site"
+
+msgid "Create a free account"
+msgstr "Créer un compte gratuit"
+
+msgid "Deleted in Pathly."
+msgstr "Supprimé dans Pathly."
+
+msgid "Failing"
+msgstr "En échec"
+
+msgid "Last failure"
+msgstr "Dernier échec"
+
+msgid "Not run yet"
+msgstr "Pas encore exécuté"
+
+msgid "Not set up yet."
+msgstr "Pas encore configuré."
+
+msgid "Open Pathly"
+msgstr "Ouvrir Pathly"
+
+msgid "Plan and billing"
+msgstr "Offre et facturation"
+
+msgid "Plan"
+msgstr "Offre"
+
+msgid "Screenshot of the step that failed"
+msgstr "Capture de l'étape en échec"
+
+msgid "Set it up"
+msgstr "Le configurer"
+
+msgid "The site is not connected to Pathly yet."
+msgstr "Le site n'est pas encore connecté à Pathly."
+
+msgid "Watches the path of your site with Pathly: Ping if it is up, Flow if a visitor can walk it. Replays the Flow after each update."
+msgstr "Surveille le parcours de votre site avec Pathly : Ping s'il répond, Flow si un visiteur peut aller au bout. Rejoue le Flow après chaque mise à jour."
+
+msgid "Administer Pathly"
+msgstr "Administrer Pathly"
+
+msgid "Set the Pathly API key, prepare the Flow and see the Ping and Flow status."
+msgstr "Définir la clé d'API Pathly, préparer le Flow et voir l'état du Ping et du Flow."
+
+msgid "Connect the site to Pathly: Ping, Flow and uptime badge."
+msgstr "Connecter le site à Pathly : Ping, Flow et badge de disponibilité."
+
+msgid "Ping and Flow status, last failure, plan and quotas."
+msgstr "État du Ping et du Flow, dernier échec, offre et quotas."
+
+msgid "Pathly settings"
+msgstr "Réglages de Pathly"
+
+msgid "Replay the Flow after an update of Drupal core, a module or a theme"
+msgstr "Rejouer le Flow après une mise à jour du cœur de Drupal, d'un module ou d'un thème"
+
+msgid "The replay after an update (@trigger) failed: HTTP @status @code."
+msgstr "Le rejeu après une mise à jour (@trigger) a échoué : HTTP @status @code."
+
+msgid "Replay requested in Pathly after an update (@trigger)."
+msgstr "Rejeu demandé à Pathly après une mise à jour (@trigger)."

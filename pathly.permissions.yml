@@ -1,0 +1,4 @@
+administer pathly:
+  title: 'Administer Pathly'
+  description: 'Set the Pathly API key, prepare the Flow and see the Ping and Flow status.'
+  restrict access: true

@@ -1,0 +1,16 @@
+{
+    "name": "drupal/pathly",
+    "description": "Watches the path of your Drupal site with Pathly: Ping, Flow prepared by Lumi, replay after each update, status in the administration and uptime badge.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://pathlyhq.com",
+    "keywords": ["Drupal", "monitoring", "uptime", "synthetic monitoring", "Drupal Commerce"],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/pathly",
+        "source": "https://git.drupalcode.org/project/pathly"
+    },
+    "require": {
+        "php": ">=8.1",
+        "drupal/core": "^10.3 || ^11"
+    }
+}

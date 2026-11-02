@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="pathly">
+  <description>Normes de code Drupal pour le module Pathly.</description>
+  <file>.</file>
+  <arg name="extensions" value="php,module,install,inc,yml,twig,css,md"/>
+  <arg name="colors"/>
+  <arg value="sp"/>
+  <exclude-pattern>vendor/*</exclude-pattern>
+  <exclude-pattern>build/*</exclude-pattern>
+  <exclude-pattern>publication/*</exclude-pattern>
+  <exclude-pattern>node_modules/*</exclude-pattern>
+  <exclude-pattern>.github/*</exclude-pattern>
+  <exclude-pattern>CHANGELOG.md</exclude-pattern>
+  <rule ref="Drupal"/>
+  <rule ref="DrupalPractice"/>
+</ruleset>

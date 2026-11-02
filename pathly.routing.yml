@@ -1,0 +1,15 @@
+pathly.settings:
+  path: '/admin/config/services/pathly'
+  defaults:
+    _form: '\Drupal\pathly\Form\SettingsForm'
+    _title: 'Pathly'
+  requirements:
+    _permission: 'administer pathly'
+
+pathly.report:
+  path: '/admin/reports/pathly'
+  defaults:
+    _controller: '\Drupal\pathly\Controller\ReportController::page'
+    _title: 'Pathly'
+  requirements:
+    _permission: 'administer pathly'

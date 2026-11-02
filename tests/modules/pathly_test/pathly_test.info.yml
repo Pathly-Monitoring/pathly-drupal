@@ -1,0 +1,6 @@
+name: 'Pathly test'
+type: module
+description: 'Fake Pathly API for the automated tests.'
+package: Testing
+hidden: true
+core_version_requirement: ^10.3 || ^11

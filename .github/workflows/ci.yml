@@ -1,0 +1,121 @@
+# Normes de code, tests PHPUnit (Unit avec couverture à 100 %, et Kernel),
+# test d'intégration sur un vrai Drupal en Docker, et archive à publier.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  phpcs:
+    name: phpcs Drupal et DrupalPractice
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: module
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          coverage: none
+          tools: composer:v2
+      - name: Installe drupal/coder
+        run: |
+          mkdir coder && cd coder
+          composer init --no-interaction --name=pathly/coder
+          composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+          composer require --no-interaction --no-progress drupal/coder
+      - name: phpcs
+        working-directory: module
+        run: ../coder/vendor/bin/phpcs --standard=phpcs.xml.dist
+
+  phpunit:
+    name: PHPUnit, Drupal ${{ matrix.drupal }} (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - drupal: "~10.3.0"
+            php: "8.1"
+            coverage: none
+          - drupal: "^11"
+            php: "8.3"
+            coverage: xdebug
+    env:
+      SIMPLETEST_DB: sqlite://localhost//tmp/pathly-tests.sqlite
+      SIMPLETEST_BASE_URL: http://localhost
+      BROWSERTEST_OUTPUT_DIRECTORY: /tmp
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: module
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: ${{ matrix.coverage }}
+          extensions: gd, pdo_sqlite
+          tools: composer:v2
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/composer
+          key: composer-${{ matrix.drupal }}-${{ matrix.php }}-${{ github.run_id }}
+          restore-keys: composer-${{ matrix.drupal }}-${{ matrix.php }}-
+      - name: Projet Drupal ${{ matrix.drupal }}
+        run: bash module/tests/docker/setup-project.sh "${{ matrix.drupal }}" drupal
+      - name: Copie du module
+        run: cp -r module drupal/web/modules/custom/pathly
+      - name: Tests unitaires et couverture (lignes et branches à 100 %)
+        if: matrix.coverage == 'xdebug'
+        working-directory: drupal/web/modules/custom/pathly
+        env:
+          XDEBUG_MODE: coverage
+        run: |
+          ../../../../vendor/bin/phpunit --testsuite unit
+          php tests/coverage-check.php build/coverage.cov
+      - name: Tests Kernel (Drupal réel, SQLite)
+        if: matrix.coverage == 'xdebug'
+        working-directory: drupal/web/modules/custom/pathly
+        run: ../../../../vendor/bin/phpunit --testsuite kernel --no-coverage
+      - name: Tests unitaires et Kernel (PHPUnit de Drupal 10.3)
+        if: matrix.coverage == 'none'
+        working-directory: drupal
+        run: vendor/bin/phpunit -c web/core web/modules/custom/pathly/tests/src
+
+  integration:
+    name: Intégration, ${{ matrix.image }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - drupal:10.3-php8.2-apache
+          - drupal:11-php8.4-apache
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installer, configurer, mettre à jour, désinstaller
+        run: docker run --rm -v "$PWD:/module:ro" ${{ matrix.image }} bash /module/tests/integration/run.sh
+
+  package:
+    name: Archive à publier
+    runs-on: ubuntu-latest
+    needs: [phpcs, phpunit, integration]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Archive (sans les tests ni le dossier de publication)
+        run: |
+          version=$(cat version.txt)
+          git archive --format=tar.gz --prefix=pathly/ -o "pathly-$version.tar.gz" HEAD
+          tar -tzf "pathly-$version.tar.gz" | sort
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pathly-drupal
+          path: pathly-*.tar.gz

@@ -1,0 +1,9 @@
+name: Pathly
+type: module
+description: 'Watches the path of your site with Pathly: Ping if it is up, Flow if a visitor can walk it. Replays the Flow after each update.'
+package: Web services
+core_version_requirement: ^10.3 || ^11
+php: 8.1
+configure: pathly.settings
+'interface translation project': pathly
+'interface translation server pattern': modules/contrib/pathly/translations/%language.po

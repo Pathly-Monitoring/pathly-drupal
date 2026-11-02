@@ -1,0 +1,52 @@
+/**
+ * @file
+ * Pathly status in the administration.
+ */
+
+.pathly-status__list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.pathly-status__list dd {
+  margin: 0;
+}
+
+.pathly-status__state {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+
+.pathly-status__state--ok {
+  color: #0b5d1e;
+  background: #dff3e4;
+}
+
+.pathly-status__state--fail,
+.pathly-status__state--error {
+  color: #8a1c1c;
+  background: #fbe3e3;
+}
+
+.pathly-status__state--none {
+  background: #ececec;
+}
+
+.pathly-status__error {
+  color: #8a1c1c;
+}
+
+.pathly-status__shot {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.pathly-status__quotas {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}

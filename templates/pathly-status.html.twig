@@ -1,0 +1,76 @@
+{#
+/**
+ * @file
+ * Ping and Flow status, last failure, plan and quotas.
+ *
+ * Available variables:
+ * - data: report read from Pathly (see StatusReport::build()).
+ * - settings_url: settings of the module.
+ * - app_url: Pathly app.
+ * - signup_url: free sign-up on Pathly.
+ */
+#}
+{% set labels = {
+  'ok': 'OK'|t,
+  'fail': 'Failing'|t,
+  'error': 'Failing'|t,
+} %}
+<div class="pathly-status">
+  {% if not data.connected %}
+    <p>{{ 'The site is not connected to Pathly yet.'|t }}</p>
+    <p>
+      <a href="{{ settings_url }}">{{ 'Connect the site'|t }}</a>
+      · <a href="{{ signup_url }}" target="_blank" rel="noopener">{{ 'Create a free account'|t }}</a>
+    </p>
+  {% elseif data.error %}
+    <p class="pathly-status__error">{{ data.error }}</p>
+  {% else %}
+    <dl class="pathly-status__list">
+      {% for name, scenario in { 'Ping': data.ping, 'Flow': data.flow } %}
+        <dt>{{ name }}</dt>
+        <dd>
+          {% if scenario is empty %}
+            {{ 'Not set up yet.'|t }} <a href="{{ settings_url }}">{{ 'Set it up'|t }}</a>
+          {% elseif scenario.missing %}
+            {{ 'Deleted in Pathly.'|t }} <a href="{{ settings_url }}">{{ 'Choose another one'|t }}</a>
+          {% else %}
+            <span class="pathly-status__state pathly-status__state--{{ scenario.lastStatus|default('none')|clean_class }}">
+              {{ labels[scenario.lastStatus]|default('Not run yet'|t) }}
+            </span>
+            <a href="{{ app_url }}/monitors/{{ scenario.id }}" target="_blank" rel="noopener">{{ scenario.name }}</a>
+          {% endif %}
+        </dd>
+      {% endfor %}
+    </dl>
+
+    {% if data.failure %}
+      <h3>{{ 'Last failure'|t }}</h3>
+      <p>
+        {{ data.failure.created_at|date('Y-m-d H:i') }} · {{ data.failure.monitor_name }}
+        {% if data.failure.message %}<br>{{ data.failure.message }}{% endif %}
+      </p>
+      {% if data.failure.screenshotUrl %}
+        <a href="{{ data.failure.screenshotUrl }}" target="_blank" rel="noopener">
+          <img class="pathly-status__shot" src="{{ data.failure.screenshotUrl }}" alt="{{ 'Screenshot of the step that failed'|t }}" loading="lazy">
+        </a>
+      {% endif %}
+    {% endif %}
+
+    {% if data.account %}
+      <h3>{{ 'Plan'|t }}: {{ data.account.plan.name }}</h3>
+      <ul class="pathly-status__quotas">
+        {% for name, quota in { 'Ping': data.account.quotas.ping, 'Flow': data.account.quotas.flow, 'Lumi': data.account.quotas.assistantTrials } %}
+          {% if quota %}
+            <li>{{ name }}: {{ quota.used }} / {{ quota.limit ?? '∞' }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <p>
+        <a href="{{ app_url }}/dashboard" target="_blank" rel="noopener">{{ 'Open Pathly'|t }}</a>
+        {% if data.account.billingUrl %}
+          · <a href="{{ data.account.billingUrl }}" target="_blank" rel="noopener">{{ 'Plan and billing'|t }}</a>
+        {% endif %}
+      </p>
+    {% endif %}
+  {% endif %}
+</div>

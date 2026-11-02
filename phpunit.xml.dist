@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tests du module. Les tests unitaires portent la couverture des lignes et
+  des branches (Xdebug) : phpunit --testsuite unit, puis
+  php tests/coverage-check.php build/coverage.cov. Les tests Kernel tournent
+  sur un vrai Drupal : phpunit --testsuite kernel --no-coverage.
+  Le module doit être dans web/modules/custom/pathly d'un projet Drupal 11
+  qui a drupal/core-dev. Voir tests/README.md.
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="../../../core/tests/bootstrap.php"
+         colors="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         failOnPhpunitWarning="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         cacheResult="false"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd">
+  <php>
+    <ini name="error_reporting" value="32767"/>
+    <ini name="memory_limit" value="-1"/>
+    <env name="SIMPLETEST_BASE_URL" value="http://localhost"/>
+    <env name="SIMPLETEST_DB" value="sqlite://localhost//tmp/pathly-tests.sqlite"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/tmp"/>
+  </php>
+  <testsuites>
+    <testsuite name="unit">
+      <directory>tests/src/Unit</directory>
+    </testsuite>
+    <testsuite name="kernel">
+      <directory>tests/src/Kernel</directory>
+    </testsuite>
+  </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">src</directory>
+      <file>pathly.module</file>
+      <file>pathly.install</file>
+    </include>
+  </source>
+  <coverage pathCoverage="true">
+    <report>
+      <text outputFile="php://stdout" showOnlySummary="false"/>
+      <cobertura outputFile="build/cobertura.xml"/>
+      <php outputFile="build/coverage.cov"/>
+    </report>
+  </coverage>
+</phpunit>
