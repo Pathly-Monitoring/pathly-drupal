@@ -48,14 +48,14 @@ class StatusReportTest extends PathlyKernelTestBase {
       'GET /v1/scenarios/' . self::FLOW => [200, ['id' => self::FLOW, 'name' => 'Cart', 'lastStatus' => 'fail']],
       'GET /v1/runs' => [[200, [
         'items' => [
-        ['id' => 'f-ok', 'status' => 'ok', 'created_at' => '2026-11-02T10:05:00Z'],
-        ['id' => self::RUN, 'status' => 'fail', 'created_at' => '2026-11-02T10:00:00Z'],
+          ['id' => 'f-ok', 'status' => 'ok', 'created_at' => '2026-11-02T10:05:00Z'],
+          ['id' => self::RUN, 'status' => 'fail', 'created_at' => '2026-11-02T10:00:00Z'],
         ],
       ],
       ], [200, [
         'items' => [
-        ['id' => 'p-old', 'status' => 'error', 'created_at' => '2026-11-01T08:00:00Z'],
-        ['id' => 'p-older', 'status' => 'fail', 'created_at' => '2026-10-01T08:00:00Z'],
+          ['id' => 'p-old', 'status' => 'error', 'created_at' => '2026-11-01T08:00:00Z'],
+          ['id' => 'p-older', 'status' => 'fail', 'created_at' => '2026-10-01T08:00:00Z'],
         ],
       ],
       ],

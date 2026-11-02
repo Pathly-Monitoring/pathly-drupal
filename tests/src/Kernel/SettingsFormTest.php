@@ -120,11 +120,11 @@ class SettingsFormTest extends PathlyKernelTestBase {
           'item' => [
             'status' => 'ready',
             'proposals' => [
-          ['index' => 0, 'kind' => 'contact'],
-          ['index' => 1, 'kind' => 'login'],
-          ['index' => 2, 'kind' => 'cart'],
-          ['index' => 3, 'kind' => 'custom'],
-          ['index' => 4],
+              ['index' => 0, 'kind' => 'contact'],
+              ['index' => 1, 'kind' => 'login'],
+              ['index' => 2, 'kind' => 'cart'],
+              ['index' => 3, 'kind' => 'custom'],
+              ['index' => 4],
             ],
           ],
         ],

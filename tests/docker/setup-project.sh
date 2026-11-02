@@ -12,5 +12,8 @@ cd "$DIR"
 composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
 composer config --no-plugins allow-plugins.phpstan/extension-installer true
 composer config --no-plugins allow-plugins.tbachert/spi true
+# Composer 2.9 refuses packages with security advisories. Old Drupal minor
+# versions (10.3) are tested on purpose, in this throwaway project only.
+composer config audit.block-insecure false || true
 composer require --dev --no-interaction --no-progress -W "drupal/core-dev:$CONSTRAINT" drupal/coder drush/drush
 mkdir -p web/modules/custom

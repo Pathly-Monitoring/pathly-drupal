@@ -79,9 +79,9 @@ class ConnectorTest extends PathlyUnitTestBase {
     FakeApi::reset([
       'GET /v1/scenarios' => [200, [
         'items' => [
-      ['id' => 'x', 'type' => 'browser', 'url' => 'https://shop.example'],
-      ['id' => 'y', 'type' => 'http'],
-      ['id' => self::PING, 'type' => 'http', 'url' => 'https://Shop.example/'],
+          ['id' => 'x', 'type' => 'browser', 'url' => 'https://shop.example'],
+          ['id' => 'y', 'type' => 'http'],
+          ['id' => self::PING, 'type' => 'http', 'url' => 'https://Shop.example/'],
         ],
       ],
       ],
@@ -146,10 +146,10 @@ class ConnectorTest extends PathlyUnitTestBase {
     FakeApi::reset([
       'GET /v1/scenarios' => [[200, [
         'items' => [
-      ['id' => self::FLOW, 'type' => 'browser', 'name' => 'Cart'],
-      ['id' => 'b2', 'type' => 'browser'],
-      ['id' => self::PING, 'type' => 'http'],
-      ['id' => 'c', 'name' => 'no type'],
+          ['id' => self::FLOW, 'type' => 'browser', 'name' => 'Cart'],
+          ['id' => 'b2', 'type' => 'browser'],
+          ['id' => self::PING, 'type' => 'http'],
+          ['id' => 'c', 'name' => 'no type'],
         ],
       ],
       ], [500, []],
@@ -272,10 +272,10 @@ class ConnectorTest extends PathlyUnitTestBase {
     $route = 'POST /v1/flow-assistant/trials/' . self::TRIAL . '/save';
     FakeApi::reset([
       $route => [
-      [201, ['item' => ['id' => self::FLOW]]],
-      [409, ['code' => 'already_saved', 'monitorId' => 'f2']],
-      [409, ['code' => 'already_saved']],
-      [403, ['code' => 'PLAN_LIMIT']],
+        [201, ['item' => ['id' => self::FLOW]]],
+        [409, ['code' => 'already_saved', 'monitorId' => 'f2']],
+        [409, ['code' => 'already_saved']],
+        [403, ['code' => 'PLAN_LIMIT']],
       ],
     ]);
     $state = $this->container->get('state');
